@@ -81,3 +81,8 @@ section {
     color: var(--text-primary);
     font-weight: 600;
 }
+
+.card {
+    max-width: 100%;
+    overflow: hidden; /* 防止内容溢出 */
+}
