@@ -84,4 +84,75 @@ document.addEventListener('DOMContentLoaded', function() {
         bmiCategory.textContent = '';
     }
 
+    const calculateBmrBtn = document.getElementById('calculateBmrBtn');
+    const bmrResult = document.getElementById('bmrResult');
+    const bmrMaintenance = document.getElementById('bmrMaintenance');
+    const calorieNeeds = document.getElementById('calorieNeeds');
+
+    calculateBmrBtn.addEventListener('click', calculateBMR);
+
+    function calculateBMR() {
+        const age = parseFloat(document.getElementById('age').value);
+        const gender = document.getElementById('gender').value;
+        const height = parseFloat(document.getElementById('heightBmr').value);
+        const weight = parseFloat(document.getElementById('weightBmr').value);
+        const activityLevel = parseFloat(document.getElementById('activityLevel').value);
+
+        if (isNaN(age) || isNaN(height) || isNaN(weight) || age <= 0 || height <= 0 || weight <= 0) {
+            alert('Please enter valid values');
+            return;
+        }
+
+        let bmr;
+        if (gender === 'male') {
+            bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+        } else {
+            bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+        }
+
+        displayBMRResults(bmr, activityLevel);
+    }
+
+    function displayBMRResults(bmr, activityLevel) {
+        const roundedBMR = Math.round(bmr);
+        bmrResult.innerHTML = `<strong>Your BMR: ${roundedBMR} calories/day</strong>`;
+
+        const maintenanceCalories = Math.round(bmr * activityLevel);
+        bmrMaintenance.textContent = `Maintenance: ${maintenanceCalories} calories/day`;
+        bmrMaintenance.style.color = 'var(--text-secondary)';
+        bmrMaintenance.style.fontWeight = 'bold';
+
+        const activityLevels = [
+            { level: 1.2, desc: "Sedentary" },
+            { level: 1.375, desc: "Light activity" },
+            { level: 1.55, desc: "Moderate activity" },
+            { level: 1.725, desc: "Very active" },
+            { level: 1.9, desc: "Extra active" }
+        ];
+
+        const activityMeter = document.getElementById('activity');
+        const activityLevelSelect = document.getElementById('activityLevel');
+
+        activityLevelSelect.addEventListener('change', function() {
+            const selectedIndex = this.selectedIndex;
+            activityMeter.value = selectedIndex + 1;
+        });
+
+        activityMeter.value = activityLevelSelect.selectedIndex + 1;
+
+        let calorieHtml = '<div class="row mt-3">';
+        activityLevels.forEach(item => {
+            const calories = Math.round(bmr * item.level);
+            calorieHtml += `
+            <div class="col-12 col-sm-6 mb-2">
+                <small>${item.desc}:</small><br>
+                <span class="badge bg-secondary">${calories} cal</span>
+            </div>
+        `;
+        });
+        calorieHtml += '</div>';
+
+        calorieNeeds.innerHTML = calorieHtml;
+    }
+
 });

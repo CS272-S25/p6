@@ -1,18 +1,37 @@
-/* color definition */
+/* ================ */
+/* Color Variables */
+/* ================ */
 :root {
+    /* Primary Green Palette */
     --primary-light: #e8f5e9;
     --primary-main: #a5d6a7;
     --primary-dark: #81c784;
+
+    /* Secondary Green Palette */
     --secondary-light: #f1f8e9;
     --secondary-dark: #7cb342;
+
+    /* Text Colors */
     --text-primary: #1b5e20;
     --text-secondary: #2e7d32;
     --text-light: #ffffff;
+
+    /* Background Colors */
     --background: #f5f5f5;
     --card-bg: #ffffff;
+
+    /* Border & UI Colors */
     --border-color: #c8e6c9;
+    --link-color: #2e7d32;
+    --link-hover: #1b5e20;
+
+    /* Animation */
+    --transition-speed: 0.3s;
 }
 
+/* ============= */
+/* Base Styles */
+/* ============= */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--background);
@@ -20,21 +39,48 @@ body {
     line-height: 1.6;
 }
 
+/* ============== */
+/* Typography */
+/* ============== */
 h1, h2, h3, h4, h5, h6 {
-    color: var(--text-primary);
     font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
 }
 
 h1 {
-    border-bottom: 2px solid var(--primary-main);
     font-size: 2.8rem;
+    border-bottom: 2px solid var(--primary-main);
+    padding-bottom: 0.5rem;
 }
 
+h2 {
+    font-size: 2.2rem;
+    color: var(--text-secondary);
+}
+
+h3 {
+    font-size: 1.8rem;
+}
+
+p {
+    margin-bottom: 1.2rem;
+}
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+/* ============= */
+/* Navigation */
+/* ============= */
 .navbar {
     background-color: var(--primary-main);
     padding: 1rem;
     border-radius: 0.5rem;
     margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .navbar a {
@@ -43,20 +89,105 @@ h1 {
     font-weight: 500;
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
-    transition: all 0.3s ease;
+    transition: all var(--transition-speed) ease;
+    margin: 0 0.25rem;
 }
 
-.navbar a:hover {
+.navbar a:hover,
+.navbar a.active {
     background-color: var(--primary-dark);
     color: var(--text-light);
 }
 
+.navbar a:hover {
+    transform: translateY(-2px);
+}
+
+.navbar a.active {
+    font-weight: 600;
+}
+
+/* ========== */
+/* Links */
+/* ========== */
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+    font-weight: 500;
+}
+
+a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+.external-link::after {
+    content: " ↗";
+    font-size: 0.8em;
+}
+
+/* ========== */
+/* Layout */
+/* ========== */
 section {
     background-color: var(--card-bg);
-    padding: 1.5rem;
+    padding: 2rem;
     border-radius: 0.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 2rem;
+    transition: transform var(--transition-speed) ease;
+}
+
+section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ========== */
+/* Cards */
+/* ========== */
+.card {
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: all var(--transition-speed) ease;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: var(--primary-main);
+    color: white;
+    font-weight: 600;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+}
+
+/* ========== */
+/* Buttons */
+/* ========== */
+.btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.3rem;
+    font-weight: 500;
+    text-align: center;
+    transition: all var(--transition-speed) ease;
+    cursor: pointer;
 }
 
 .btn-primary {
@@ -69,20 +200,112 @@ section {
     background-color: var(--primary-dark);
     border-color: var(--primary-dark);
     color: var(--text-light);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.card {
+.btn-outline-primary {
+    color: var(--primary-main);
+    border-color: var(--primary-main);
+    border-width: 2px;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-main);
+    color: white;
+}
+
+.btn-group {
+    justify-content: flex-start;
+}
+
+/* ========== */
+/* Forms */
+/* ========== */
+input, select, textarea {
+    padding: 0.6rem;
     border: 1px solid var(--border-color);
-    border-radius: 0.5rem;
+    border-radius: 0.3rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    transition: border-color var(--transition-speed) ease;
 }
 
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-main);
+    box-shadow: 0 0 0 2px rgba(165, 214, 167, 0.3);
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+/* ========== */
+/* Meter */
+/* ========== */
+meter {
+    width: 100%;
+    height: 20px;
+}
+
+meter::-webkit-meter-bar {
+    background: transparent;
+}
+
+meter::-webkit-meter-optimum-value {
+    background: var(--primary-main);
+}
+
+/* ================ */
+/* Responsive Design */
+/* ================ */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .navbar a {
+        display: block;
+        margin: 0.5rem 0;
+    }
+
+    section {
+        padding: 1.5rem;
+    }
+}
+
+/* ===================== */
+/* bmi.html file special */
+/* ===================== */
 .card-header {
-    background-color: var(--primary-light);
-    color: var(--text-primary);
-    font-weight: 600;
+    background-color: var(--primary-main) !important;
+    color: var(--text-primary) !important;
+    border-bottom: 1px solid var(--primary-dark);
 }
 
-.card {
-    max-width: 100%;
-    overflow: hidden; /* 防止内容溢出 */
+.btn-group.unit-system-group .btn-outline-primary {
+    /* not selected */
+    color: var(--text-secondary) !important;
+    background-color: white !important;
+    border: 2px solid var(--text-secondary) !important;
+
+    /* hover */
+    &:hover {
+        color: white !important;
+        background-color: var(--text-secondary) !important;
+    }
+}
+
+/* selected */
+.btn-group.unit-system-group .btn-check:checked + .btn-outline-primary {
+    color: white !important;
+    background-color: var(--text-secondary) !important;
+    border-color: var(--text-secondary) !important;
 }
