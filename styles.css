@@ -26,7 +26,7 @@
     --link-hover: #1b5e20;
 
     /* Animation */
-    --transition-speed: 0.3s;
+    --transition-speed: 0.2s;
 }
 
 /* ============= */
@@ -39,6 +39,22 @@ body {
     line-height: 1.6;
 }
 
+header {
+    background: linear-gradient(135deg, var(--primary-light), white);
+}
+
+header.plain-header {
+    background-color: white;
+}
+
+body {
+    background: linear-gradient(
+            135deg,
+            var(--primary-light) 0%,
+            var(--background) 100%
+    )
+}
+
 /* ============== */
 /* Typography */
 /* ============== */
@@ -46,12 +62,6 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     margin-bottom: 1rem;
     color: var(--text-primary);
-}
-
-h1 {
-    font-size: 2.8rem;
-    border-bottom: 2px solid var(--primary-main);
-    padding-bottom: 0.5rem;
 }
 
 h2 {
@@ -72,9 +82,26 @@ p {
     font-weight: 300;
 }
 
+/* ===== */
+/* Title */
+/* ===== */
+.title-svg {
+    width: 90%;
+    max-width: 700px;
+    height: auto;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.title-svg:hover text {
+    filter: drop-shadow(0 0 5px rgba(129, 199, 132, 0.7));
+}
+
+
 /* ============= */
 /* Navigation */
 /* ============= */
+/* Navbar Container */
 .navbar {
     background-color: var(--primary-main);
     padding: 1rem;
@@ -83,16 +110,19 @@ p {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Navbar Links - Base Styles */
 .navbar a {
     color: var(--text-primary);
     text-decoration: none;
     font-weight: 500;
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
-    transition: all var(--transition-speed) ease;
     margin: 0 0.25rem;
+    position: relative;
+    transition: all var(--transition-speed) ease;
 }
 
+/* Navbar Links - Hover & Active States */
 .navbar a:hover,
 .navbar a.active {
     background-color: var(--primary-dark);
@@ -101,10 +131,28 @@ p {
 
 .navbar a:hover {
     transform: translateY(-2px);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .navbar a.active {
     font-weight: 600;
+}
+
+/* Underline Animation */
+.navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--primary-dark);
+    transition: all var(--transition-speed) ease;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+    left: 0;
 }
 
 /* ========== */
@@ -295,7 +343,6 @@ meter::-webkit-meter-optimum-value {
     color: var(--text-secondary) !important;
     background-color: white !important;
     border: 2px solid var(--text-secondary) !important;
-
     /* hover */
     &:hover {
         color: white !important;
@@ -309,3 +356,5 @@ meter::-webkit-meter-optimum-value {
     background-color: var(--text-secondary) !important;
     border-color: var(--text-secondary) !important;
 }
+
+

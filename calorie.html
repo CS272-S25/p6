@@ -11,20 +11,86 @@
 </head>
 
 <body>
-<section class="m-3">
-    <h1>Eat Stronger</h1>
-</section>
+<header class="text-center py-4">
+    <svg viewBox="0 0 600 150" class="title-svg">
+        <defs>
+            <!-- color change -->
+            <linearGradient id="titleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#1b5e20">
+                    <animate attributeName="stop-color"
+                             values="#1b5e20; #2e7d32; #1b5e20"
+                             dur="8s" repeatCount="indefinite" />
+                </stop>
+                <stop offset="100%" stop-color="#7cb342">
+                    <animate attributeName="stop-color"
+                             values="#7cb342; #1b5e20; #7cb342"
+                             dur="5s" repeatCount="indefinite" />
+                </stop>
+            </linearGradient>
+            <!-- leaf shape -->
+            <path id="leaf" d="M15,0 Q22,10 15,20 Q5,15 15,0" fill="#81c784" />
+            <!-- glow -->
+            <filter id="leafGlow" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="2" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+        </defs>
+        <!-- multiple degree leafs -->
+        <g transform="translate(50,100) rotate(-15)">
+            <use href="#leaf" filter="url(#leafGlow)" opacity="0.8">
+                <animateTransform attributeName="transform" type="rotate" from="-15" to="5" dur="7s" repeatCount="indefinite"/>
+            </use>
+        </g>
+        <g transform="translate(120,80) rotate(25)">
+            <use href="#leaf" filter="url(#leafGlow)" opacity="0.7">
+                <animateTransform attributeName="transform" type="rotate" from="25" to="-5" dur="6s" repeatCount="indefinite"/>
+            </use>
+        </g>
+        <g transform="translate(480,100) rotate(10)">
+            <use href="#leaf" filter="url(#leafGlow)" opacity="0.9">
+                <animateTransform attributeName="transform" type="rotate" from="10" to="-20" dur="8s" repeatCount="indefinite"/>
+            </use>
+        </g>
+        <g transform="translate(550,80) rotate(-25)">
+            <use href="#leaf" filter="url(#leafGlow)" opacity="0.6">
+                <animateTransform attributeName="transform" type="rotate" from="-25" to="15" dur="5s" repeatCount="indefinite"/>
+            </use>
+        </g>
+        <g transform="translate(300,30)">
+            <use href="#leaf" transform="scale(1.2)" filter="url(#leafGlow)" opacity="0.5">
+                <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="20s" repeatCount="indefinite"/>
+            </use>
+        </g>
+        <!-- title -->
+        <text x="50%" y="90"
+              font-family="Arial Rounded MT Bold, sans-serif"
+              font-size="60"
+              fill="url(#titleGradient)"
+              text-anchor="middle"
+              style="font-weight:bold; letter-spacing:2px;">
+            Eat Stronger
+            <animateTransform attributeName="transform"
+                              type="translate"
+                              values="0,0; 0,-3; 0,0"
+                              dur="6s"
+                              repeatCount="indefinite" />
+        </text>
+    </svg>
+</header>
+
 <div>
     <nav class="navbar">
-        <p>
-            <a class="m-2" href="index.html">Home</a>
-            <a class="m-2" href="nutrition.html">Learn About Nutrition</a>
-            <a class="m-2" href="bmi.html">BMI & BMR</a>
-            <a class="m-2" href="calorie.html">Calorie Calculator</a>
-            <a class="m-2" href="recipe.html">Choose Your Recipe</a>
-            <a class="m-2" href="weight.html">Weight Record</a>
-            <a class="m-2" href="aboutus.html">About Us</a>
-        </p>
+        <div class="d-flex justify-content-center w-100">
+            <div class="d-flex flex-wrap align-items-center">
+                <a class="mx-3 my-2 fs-6 fw-bold" href="index.html">Home</a>
+                <a class="mx-3 my-2 fs-6 fw-bold" href="nutrition.html">Learn About Nutrition</a>
+                <a class="mx-3 my-2 fs-6 fw-bold" href="bmi.html">BMI & BMR</a>
+                <a class="mx-3 my-2 fs-6 fw-bold" href="calorie.html">Calorie Calculator</a>
+                <a class="mx-3 my-2 fs-6 fw-bold" href="recipe.html">Choose Your Recipe</a>
+                <a class="mx-3 my-2 fs-6 fw-bold" href="weight.html">Weight Record</a>
+                <a class="mx-3 my-2 fs-6 fw-bold" href="aboutus.html">About Us</a>
+            </div>
+        </div>
     </nav>
 </div>
 <section class="m-3">
