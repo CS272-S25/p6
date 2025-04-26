@@ -358,3 +358,64 @@ meter::-webkit-meter-optimum-value {
 }
 
 
+
+/* ===================== */
+/*  register and login   */
+/* ===================== */
+.auth-box {
+        max-width: 340px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #d8dee4;
+        border-radius: 6px;
+        background-color: #fff;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .auth-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .auth-header h1 {
+        font-size: 24px;
+        font-weight: 300;
+        letter-spacing: -0.5px;
+    }
+
+    .auth-form .form-control {
+        margin-bottom: 15px;
+        padding: 5px 12px;
+        font-size: 14px;
+        line-height: 20px;
+        border-radius: 6px;
+        border: 1px solid #d8dee4;
+    }
+
+    .auth-form .btn {
+        width: 100%;
+        padding: 5px 16px;
+        font-size: 14px;
+        font-weight: 500;
+        border-radius: 6px;
+    }
+
+    .auth-footer {
+        margin-top: 16px;
+        padding: 16px;
+        text-align: center;
+        border: 1px solid #d8dee4;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+
+    .auth-switch {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .auth-switch a {
+        font-size: 14px;
+    }
