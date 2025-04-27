@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CS472 Group Project P6</title>
+    <title>Healthy Recipes | Eat Stronger</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="styles.css" rel="stylesheet"/>
@@ -93,10 +93,89 @@
         </div>
     </nav>
 </div>
+
 <section class="m-3">
-    <h2>Choose Your Recipe</h2>
-    <p>This is the start of your group project. Feel free to make it your own!</p>
+    <h2 >Choose Your Recipe</h2>
+    <div class="mb-5">
+        <p class="lead text-muted">Welcome to our Recipe Finder! 🌱</p>
+        <p class="text-muted">Here, you can explore a variety of <strong>healthy and delicious recipes</strong> designed to nourish your body and delight your taste buds.</p>
+        <p class="text-muted">Simply enter an ingredient, dish, or keyword into the search bar below, and uncover recipes complete with <em>nutritional information</em> and <em>ingredient details</em> to support your wellness journey!</p>
+        <p class="text-success fw-semibold fst-italic">"Good food is good mood — start your search now!"</p>
+    </div>
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-success text-white">
+                        <h2 class="h4 mb-0">Find Healthy Recipes</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center mb-4">
+                            <p class="text-muted">Discover delicious and nutritious recipes tailored to support your healthy lifestyle. Start by entering your favorite ingredient or dish below!</p>
+                        </div>
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-md-8">
+                                <div class="input-group">
+                                    <input type="text" id="recipeSearch" class="form-control" placeholder="Search for healthy recipes...">
+                                    <button class="btn btn-success" id="searchButton">
+                                        <i class="fas fa-search me-1"></i> Search
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="recipeResults" class="row g-4">
+                            <!-- Recipe cards will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
+
+
+<!-- Recipe Modal -->
+<div class="modal fade" id="recipeModal" tabindex="-1" aria-labelledby="recipeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title" id="recipeModalLabel">Recipe Details</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs" id="recipeTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="ingredients-tab" data-bs-toggle="tab" data-bs-target="#ingredients" type="button" role="tab">
+                            <i class="fas fa-carrot me-1"></i> Ingredients
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="nutrition-tab" data-bs-toggle="tab" data-bs-target="#nutrition" type="button" role="tab">
+                            <i class="fas fa-chart-pie me-1"></i> Nutrition
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="recipeTabContent">
+                    <div class="tab-pane fade show active" id="ingredients" role="tabpanel">
+                        <div id="ingredientsList"></div>
+                    </div>
+                    <div class="tab-pane fade" id="nutrition" role="tabpanel">
+                        <div id="nutritionInfo"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+                    <i class="fas fa-times me-1"></i> Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <!-- Footer -->
 <footer class="bg-success text-white py-4 mt-5">
@@ -134,5 +213,6 @@
     </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="recipe.js"></script>
 </body>
-
