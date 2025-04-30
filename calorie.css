@@ -1,0 +1,23 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.title-svg {
+    width: 100%;
+    height: auto;
+}
+
+.navbar {
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+}
+
+#calorie-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#result {
+    font-size: 1.2em;
+    color: #212529;
+}
